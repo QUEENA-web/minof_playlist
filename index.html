@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>핑크 렌즈 플레이리스트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Quicksand:wght@500;600;700&display=swap">
+<style>
+/* Layout: a bright pastel sky full of glitter; content floats on frosted-glass panels; the tracklist runs down a pink → lilac → sky ribbon.
+   Single bright theme by choice (dreamy daylight), every colour set explicitly. */
+:root{
+  --ink:#5b3c5f;
+  --muted:#8d7193;
+  --pink:#f3a0c2;
+  --hot:#e5679c;
+  --lilac:#b9a2ea;
+  --sky:#97c4f0;
+  --glass:rgba(255,255,255,.58);
+  --glass-strong:rgba(255,255,255,.78);
+  --edge:rgba(255,255,255,.9);
+  --line:rgba(229,103,156,.18);
+  --font-ko:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-latin:"Quicksand","Gowun Dodum",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{background:#f7d9ea}
+body{
+  color:var(--ink);font-family:var(--font-ko);font-size:16px;line-height:1.75;word-break:keep-all;
+  background:
+    radial-gradient(60vw 40vw at 12% 8%,rgba(255,255,255,.85),transparent 60%),
+    radial-gradient(50vw 40vw at 92% 30%,rgba(255,236,246,.9),transparent 60%),
+    radial-gradient(70vw 50vw at 80% 85%,rgba(176,212,248,.75),transparent 65%),
+    radial-gradient(60vw 50vw at 5% 70%,rgba(206,186,245,.7),transparent 60%),
+    linear-gradient(170deg,#f9d3e6 0%,#f2cfee 30%,#dcd3f6 60%,#c9e0fa 100%);
+  background-attachment:fixed;min-height:100vh;
+}
+#sparkle{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding-inline:18px;padding-block:0 80px}
+h1,h2,h3{font-family:var(--font-ko);font-weight:400;margin:0;text-wrap:balance}
+p{margin:0}
+.latin{font-family:var(--font-latin)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;padding-block:64px 40px}
+.eyebrow{font-family:var(--font-latin);font-weight:600;font-size:13px;letter-spacing:.18em;color:var(--hot);margin-bottom:16px}
+.hero h1{font-size:clamp(36px,6.4vw,58px);line-height:1.2;color:var(--ink)}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--hot),var(--lilac) 60%,var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{margin-top:10px;font-size:clamp(18px,2.6vw,22px);color:var(--muted)}
+.hero .lead{margin-top:18px;max-width:32em}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.facts span{background:var(--glass-strong);border:1px solid var(--edge);border-radius:999px;padding:5px 15px;font-size:14px;box-shadow:0 4px 14px rgba(229,103,156,.12)}
+.facts b{font-family:var(--font-latin);font-weight:700;color:var(--hot)}
+.heart-wrap{position:relative;width:min(250px,60vw);max-width:100%;aspect-ratio:1}
+.heart-wrap svg{width:100%;height:100%;overflow:visible}
+.float{animation:none}
+@media (prefers-reduced-motion:no-preference){
+  .float{animation:float 6s ease-in-out infinite}
+  .fly{animation:fly 5s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-10px)}}
+  @keyframes fly{50%{transform:translate(-6px,-12px) rotate(-6deg)}}
+}
+
+/* glass panels */
+section{margin-top:28px;background:var(--glass);border:1px solid var(--edge);border-radius:28px;padding:30px clamp(18px,4vw,40px) 34px;
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:0 10px 40px rgba(185,162,234,.18)}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sec-head .n{font-family:var(--font-latin);font-weight:700;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--pink),var(--lilac));border-radius:999px;padding:3px 12px;letter-spacing:.06em}
+.sec-head h2{font-size:clamp(22px,3.2vw,27px)}
+.prose{display:grid;gap:12px;max-width:42em}
+.muted{color:var(--muted)}
+
+dl.spec{display:grid;grid-template-columns:8em minmax(0,1fr);margin:0}
+dl.spec dt,dl.spec dd{margin:0;padding:11px 0;border-bottom:1px solid var(--line)}
+dl.spec dt{color:var(--hot);font-size:14px;padding-top:13px}
+dl.spec dt:last-of-type,dl.spec dd:last-of-type{border-bottom:none}
+
+.points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.points div{background:var(--glass-strong);border-radius:18px;padding:16px 18px}
+.points b{display:block;font-weight:400;font-size:17px;color:var(--hot);margin-bottom:4px}
+.points p{font-size:15px;color:var(--muted)}
+
+.criteria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 28px}
+.criteria div{display:grid;grid-template-columns:4em minmax(0,1fr);gap:12px;padding-block:10px;border-bottom:1px dashed var(--line)}
+.criteria b{font-weight:400;color:var(--hot)}
+.criteria span{color:var(--muted);font-size:15px}
+
+/* tracklist ribbon */
+.ribbon{position:relative;display:grid;gap:30px;padding-left:36px;margin-top:6px}
+.ribbon::before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:6px;border-radius:6px;
+  background:linear-gradient(var(--pink) 0%,var(--pink) 32%,var(--lilac) 52%,var(--lilac) 70%,var(--sky) 90%);box-shadow:0 0 14px rgba(255,255,255,.9)}
+.chapter{position:relative;--c:var(--pink)}
+.chapter.c3,.chapter.c4{--c:var(--lilac)}
+.chapter.c5{--c:var(--sky)}
+.chapter .dot{position:absolute;left:-36px;top:4px;width:26px;height:26px}
+.chapter header{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-bottom:8px}
+.chapter h3{font-size:20px}
+.chapter h3 .latin{font-weight:700;color:var(--c)}
+.chapter .mood{font-size:14px;color:var(--muted)}
+.chapter .light{font-size:12px;padding:1px 10px;border-radius:999px;background:var(--c);color:#fff}
+ol.tracks{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+ol.tracks li{display:grid;grid-template-columns:2.4em minmax(0,14em) minmax(0,1fr);gap:2px 14px;align-items:center;
+  background:var(--glass-strong);border-radius:16px;padding:10px 14px}
+.tracks .no{font-family:var(--font-latin);font-weight:700;font-size:18px;color:var(--c);font-variant-numeric:tabular-nums}
+.tracks .song b{font-weight:400;font-size:16px}
+.tracks .song small{display:block;font-family:var(--font-latin);font-weight:600;color:var(--muted);font-size:13px;line-height:1.4}
+.tracks .why{color:var(--muted);font-size:14.5px;line-height:1.55}
+.tracks li.single{background:linear-gradient(110deg,#ffd6e8,#fff 70%);box-shadow:0 0 0 2px #fff,0 6px 22px rgba(229,103,156,.28)}
+.tracks li.single .no{color:var(--hot)}
+.badge{display:inline-block;font-family:var(--font-latin);font-weight:700;font-size:11px;letter-spacing:.08em;color:#fff;background:var(--hot);border-radius:999px;padding:0 8px;margin-left:6px;vertical-align:2px}
+.reserve{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.reserve > span:first-child{font-size:14px;color:var(--hot);margin-right:4px}
+.reserve .chipx{border:1px dashed var(--pink);background:rgba(255,255,255,.4);border-radius:999px;padding:3px 13px;font-size:14px}
+.small{margin-top:16px;color:var(--muted);font-size:15px;max-width:42em}
+
+/* video options */
+.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.opt{background:var(--glass-strong);border-radius:20px;padding:18px;display:grid;gap:6px;align-content:start}
+.opt .tag{font-family:var(--font-latin);font-weight:700;font-size:26px;line-height:1;background:linear-gradient(135deg,var(--hot),var(--lilac));-webkit-background-clip:text;background-clip:text;color:transparent}
+.opt h3{font-size:18px}
+.opt p{font-size:15px;color:var(--muted)}
+.load{display:flex;gap:4px;align-items:center;font-size:13px;color:var(--muted);margin-top:6px}
+.load i{width:16px;height:6px;border-radius:3px;background:rgba(229,103,156,.18)}
+.load i.on{background:var(--pink)}
+.palette{display:flex;flex-wrap:wrap;gap:14px;margin-block:26px 20px}
+.sw{display:grid;gap:6px;justify-items:center;font-family:var(--font-latin);font-weight:600;font-size:12px;color:var(--muted)}
+.sw i{width:50px;height:50px;border-radius:50%;border:3px solid #fff;box-shadow:0 4px 12px rgba(185,162,234,.25)}
+.notep{color:var(--hot);margin-bottom:6px}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.thumbs span{background:linear-gradient(135deg,#ffe3ef,#e9e1fb);border:1px solid #fff;padding:4px 16px;border-radius:12px;font-size:15px}
+
+/* upload */
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cols h3{font-size:17px;color:var(--hot);margin-bottom:8px}
+ul.plain,ol.plain{margin:0;padding-left:1.2em;display:grid;gap:6px;font-size:15px}
+.tablewrap{overflow-x:auto;margin-top:26px;background:var(--glass-strong);border-radius:18px;padding:6px 18px}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:15px}
+th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{font-size:13px;color:var(--hot);font-weight:400}
+.warn{margin-top:20px;border-radius:16px;padding:14px 18px;font-size:15px;background:rgba(255,232,214,.75);border:1px solid #fff}
+.warn b{font-weight:400;color:#d0602c}
+ul.check{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:6px}
+ul.check li{display:flex;gap:12px;align-items:center;padding:9px 14px;border-radius:14px;background:rgba(255,255,255,.45);cursor:pointer;user-select:none}
+ul.check li::before{content:"";flex:none;width:18px;height:18px;border:2px solid var(--pink);border-radius:6px;background:#fff}
+ul.check li.done{color:var(--muted);text-decoration:line-through}
+ul.check li.done::before{background:var(--pink) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/14px no-repeat}
+ul.check li:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+footer{margin-top:44px;text-align:center;font-family:var(--font-latin);font-weight:600;letter-spacing:.2em;font-size:13px;color:var(--hot)}
+
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;padding-block:36px 20px}
+  .heart-wrap{justify-self:center;grid-row:1;width:min(200px,56vw)}
+  .points,.options,.cols,.criteria{grid-template-columns:1fr}
+  ol.tracks li{grid-template-columns:2.2em minmax(0,1fr)}
+  .tracks .why{grid-column:2}
+  dl.spec{grid-template-columns:6.2em minmax(0,1fr)}
+  .ribbon{padding-left:30px}
+  .chapter .dot{left:-32px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="sparkle" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="heart" d="M50 88 C20 66 4 48 4 30 C4 15 16 5 29 5 C38 5 45 10 50 18 C55 10 62 5 71 5 C84 5 96 15 96 30 C96 48 80 66 50 88Z"/>
+    <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc4dc"/><stop offset=".55" stop-color="#f17aaa"/><stop offset="1" stop-color="#c98ce6"/></linearGradient>
+    <radialGradient id="hl" cx=".32" cy=".28" r=".35"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+</svg>
+
+<main class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">RIPPLE · PLAYLIST PLAN</div>
+    <h1>핑크 렌즈로 바라본 <em>처음</em></h1>
+    <p class="sub">사랑을 상상하던 밤의 플레이리스트</p>
+    <p class="lead">민오브 싱글 1곡을 중심에 두고 같은 무드의 곡 10곡을 엮어, 약 37분짜리 유튜브 플레이리스트 영상 1편을 만듭니다.</p>
+    <div class="facts"><span><b>11</b>곡</span><span>약 <b>37</b>분</span><span>유튜브 롱폼</span><span>발매 후 <b>1</b>주일 이내</span></div>
+  </div>
+  <div class="heart-wrap" role="img" aria-label="반짝이는 유리 하트와 나비">
+    <svg viewBox="0 0 120 110">
+      <g class="float">
+        <use href="#heart" x="10" y="12" fill="url(#hg)" opacity=".95"/>
+        <use href="#heart" x="10" y="12" fill="url(#hl)"/>
+        <path d="M30 28 C34 20 42 18 46 22" transform="translate(10 12)" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity=".9"/>
+        <path d="M84 40 l2 6 6 2 -6 2 -2 6 -2 -6 -6 -2 6 -2z" fill="#fff"/>
+        <path d="M22 78 l1.4 4 4 1.4 -4 1.4 -1.4 4 -1.4 -4 -4 -1.4 4 -1.4z" fill="#fff"/>
+      </g>
+      <g class="fly" transform="translate(88 2)">
+        <path d="M12 14 C4 2 -4 6 2 14 C-3 18 4 24 12 16 C20 24 27 18 22 14 C28 6 20 2 12 14Z" fill="#fff" opacity=".92"/>
+        <path d="M12 9 V20" stroke="#e5679c" stroke-width="1.2" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<section id="overview">
+  <div class="sec-head"><span class="n">01</span><h2>개요</h2></div>
+  <dl class="spec">
+    <dt>콘텐츠 형식</dt><dd>유튜브 롱폼 플레이리스트 영상</dd>
+    <dt>가제</dt><dd>핑크 렌즈로 바라본 처음 — 사랑을 상상하던 밤의 플레이리스트</dd>
+    <dt>러닝타임</dt><dd>30–40분 (초안 기준 약 37분)</dd>
+    <dt>곡 수</dt><dd>11곡 (민오브 싱글 1곡 + 무드곡 10곡), 10–13곡 범위 안에서 조정</dd>
+    <dt>메인 무드</dt><dd>Dreamy / Soft / Warm / Airy, 95–105 BPM 전후 미드템포</dd>
+    <dt>공개 시점</dt><dd>음원 발매 후 1주일 이내 (마스터 일정 기준)</dd>
+    <dt>비고</dt><dd>차후 수정 가능. 곡은 아티스트가 원하는 방향으로 수정해도 좋을 것 같음. (추천 플리 느낌처럼)</dd>
+  </dl>
+</section>
+
+<section id="intent">
+  <div class="sec-head"><span class="n">02</span><h2>기획 의도</h2></div>
+  <div class="prose">
+    <p>싱글 한 곡만으로는 보여주기 어려운 앨범의 세계관을, 같은 무드의 곡들로 30분 이상 체험하게 만드는 것이 목표입니다.</p>
+    <p>앨범의 핵심은 핑크렌즈효과, 즉 아직 경험하지 않은 ‘처음’을 핑크빛으로 상상하는 시선입니다. 플레이리스트는 그 상상이 만들어지는 공간인 ‘밤의 침실’에서 흐르는 음악으로 설정합니다.</p>
+    <p>곡 순서는 가사 방향의 흐름(기대 → 상상 → 마주함 → 경험 → 나를 발견)을 그대로 따릅니다. 듣는 사람은 플레이리스트 한 편을 듣는 동안 싱글의 이야기를 한 번 더 길게 걸어가게 됩니다.</p>
+  </div>
+  <div class="points">
+    <div><b>홍보 목적</b><p>발매 후 싱글을 작업·공부·잠들기 전 같은 일상 청취 상황에 자연스럽게 노출</p></div>
+    <div><b>세계관 확장</b><p>침실·문·거울·시계 오브제를 영상에 다시 써서 뮤비·컨셉포토와 통일감 유지</p></div>
+    <div><b>아티스트 포지셔닝</b><p>레퍼런스 아티스트들과 나란히 들려주며 ‘이 무드를 좋아하는 사람이 듣는 아티스트’로 인식</p></div>
+  </div>
+</section>
+
+<section id="criteria">
+  <div class="sec-head"><span class="n">03</span><h2>선곡 기준</h2></div>
+  <p class="prose" style="margin-bottom:16px">민오브 싱글의 사운드 방향을 그대로 선곡 기준으로 삼아, 어느 곡에서 들어도 싱글과 이어지는 느낌을 주도록 합니다.</p>
+  <div class="criteria">
+    <div><b>장르</b><span>R&amp;B / Alternative R&amp;B / Neo Soul / Dream Pop / Synth Pop</span></div>
+    <div><b>템포</b><span>85–110 BPM. 싱글(95–105)보다 너무 빠르거나 느린 곡은 제외</span></div>
+    <div><b>사운드</b><span>리버브·공간감이 있고 여백이 많은 곡. Rhodes, 신스 패드, 클린 기타 중심</span></div>
+    <div><b>보컬</b><span>공기감 있는 보컬 위주. 강하게 지르는 곡은 ‘나를 발견’ 챕터에만 1곡 이내</span></div>
+    <div><b>가사</b><span>설렘·기다림·질문·자기 발견. 이별·원망이 중심인 곡은 제외</span></div>
+    <div><b>언어</b><span>국내곡 위주, 해외곡 일부 혼합 (해외 리스너 유입용)</span></div>
+    <div><b>연결성</b><span>기획안 레퍼런스 아티스트(alai, 주혜린, SUMIN, 미노이) 곡을 우선 후보로</span></div>
+  </div>
+</section>
+
+<section id="tracklist">
+  <div class="sec-head"><span class="n">04</span><h2>흐름과 트랙리스트</h2></div>
+  <p class="prose" style="margin-bottom:26px">싱글 가사의 다섯 단계를 그대로 챕터로 나눕니다. 챕터가 넘어갈수록 영상 조명도 핑크에서 블루로 바뀝니다. 싱글은 1번 트랙에 두어, 앞부분에서 나가는 시청자도 싱글은 듣고 가도록 합니다.</p>
+
+  <div class="ribbon">
+    <div class="chapter c1">
+      <svg class="dot" viewBox="0 0 100 92" aria-hidden="true"><use href="#heart" fill="#fff" stroke="var(--c)" stroke-width="10"/></svg>
+      <header><h3><span class="latin">1</span> 기대·상상</h3><span class="mood">설렘, 호기심</span><span class="light">핑크 조명</span></header>
+      <ol class="tracks">
+        <li class="single"><span class="no">01</span><span class="song"><b>민오브<span class="badge">SINGLE</span></b><small>제목 미정</small></span><span class="why">플레이리스트의 문을 여는 곡. 인트로로 세계관 제시</span></li>
+        <li><span class="no">02</span><span class="song"><b>alai</b><small>TRUE</small></span><span class="why">메인 레퍼런스. 말랑하고 사랑스러운 R&amp;B 질감</span></li>
+        <li><span class="no">03</span><span class="song"><b>백예린</b><small>Square (2017)</small></span><span class="why">몽환적인 공간감, 아직 오지 않은 사랑을 그리는 정서</span></li>
+      </ol>
+    </div>
+    <div class="chapter c2">
+      <svg class="dot" viewBox="0 0 100 92" aria-hidden="true"><use href="#heart" fill="#fff" stroke="var(--c)" stroke-width="10"/></svg>
+      <header><h3><span class="latin">2</span> 기다림</h3><span class="mood">기대, 작은 긴장</span><span class="light">핑크 조명</span></header>
+      <ol class="tracks">
+        <li><span class="no">04</span><span class="song"><b>Colde</b><small>와르르</small></span><span class="why">설렘이 커지는 순간, 따뜻하고 부드러운 톤</span></li>
+        <li><span class="no">05</span><span class="song"><b>SUMIN</b><small>우리의 계절</small></span><span class="why">기획안 레퍼런스, 계절·시간이 흐르는 이미지</span></li>
+      </ol>
+    </div>
+    <div class="chapter c3">
+      <svg class="dot" viewBox="0 0 100 92" aria-hidden="true"><use href="#heart" fill="#fff" stroke="var(--c)" stroke-width="10"/></svg>
+      <header><h3><span class="latin">3</span> 마주함</h3><span class="mood">벅참, 낯섦</span><span class="light">라이트 퍼플</span></header>
+      <ol class="tracks">
+        <li><span class="no">06</span><span class="song"><b>주혜린</b><small>미친 건가</small></span><span class="why">기획안 레퍼런스, 처음을 마주한 벅참과 낯섦</span></li>
+        <li><span class="no">07</span><span class="song"><b>죠지</b><small>바라봐줘요</small></span><span class="why">여백 많은 R&amp;B, 상대를 바라보는 시선</span></li>
+      </ol>
+    </div>
+    <div class="chapter c4">
+      <svg class="dot" viewBox="0 0 100 92" aria-hidden="true"><use href="#heart" fill="#fff" stroke="var(--c)" stroke-width="10"/></svg>
+      <header><h3><span class="latin">4</span> 경험·흔들림</h3><span class="mood">혼란, 질문</span><span class="light">라이트 퍼플</span></header>
+      <ol class="tracks">
+        <li><span class="no">08</span><span class="song"><b>DEAN</b><small>instagram</small></span><span class="why">밖을 보던 시선이 나에게로 향하는 질문</span></li>
+        <li><span class="no">09</span><span class="song"><b>새소년</b><small>난춘</small></span><span class="why">밴드 사운드로 감정이 흔들리는 구간</span></li>
+      </ol>
+    </div>
+    <div class="chapter c5">
+      <svg class="dot" viewBox="0 0 100 92" aria-hidden="true"><use href="#heart" fill="#fff" stroke="var(--c)" stroke-width="10"/></svg>
+      <header><h3><span class="latin">5</span> 나를 발견</h3><span class="mood">깨달음, 수용</span><span class="light">베이비 블루</span></header>
+      <ol class="tracks">
+        <li><span class="no">10</span><span class="song"><b>미노이</b><small>LIFE</small></span><span class="why">기획안 레퍼런스, 담담한 자기 고백</span></li>
+        <li><span class="no">11</span><span class="song"><b>검정치마</b><small>Everything</small></span><span class="why">핑크빛 세계를 부정하지 않고 끝내는 따뜻한 엔딩</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="reserve"><span>예비곡</span><span class="chipx">우효 – 민들레</span><span class="chipx">Daniel Caesar – Get You</span><span class="chipx">H.E.R. – Best Part</span></div>
+  <p class="small">곡 평균 3분 20초로 잡으면 11곡에 약 37분입니다. 실제 재생시간을 합산해 40분을 넘기면 챕터 4에서 1곡을 빼고, 30분에 모자라면 예비곡을 더해 최대 13곡까지 늘립니다. 싱글을 끝곡에도 한 번 더 넣을지는 팀 내에서 정합니다.</p>
+</section>
+
+<section id="visual">
+  <div class="sec-head"><span class="n">05</span><h2>비주얼·영상 구성</h2></div>
+  <p class="prose" style="margin-bottom:20px">영상은 아래 세 가지 방향 중 하나로 제작하며, 어느 쪽이든 앨범 컬러와 침실 무드는 유지합니다.</p>
+  <div class="options">
+    <div class="opt"><span class="tag">A</span><h3>촬영 소스 재활용</h3><p>뮤비·컨셉포토 촬영 때 침실 루프 컷을 함께 찍어 사용</p><div class="load"><i class="on"></i><i></i><i></i>&nbsp;부담 낮음 · 촬영 당일 컷 추가</div></div>
+    <div class="opt"><span class="tag">B</span><h3>별도 제작</h3><p>플레이리스트용 영상을 따로 촬영하거나 그래픽·모션으로 제작</p><div class="load"><i class="on"></i><i class="on"></i><i></i>&nbsp;부담 중간 · 별도 일정 필요</div></div>
+    <div class="opt"><span class="tag">C</span><h3>앨범 표지 단독</h3><p>앨범 표지 이미지 한 장 + 현재 곡 제목·아티스트 텍스트만 표시</p><div class="load"><i></i><i></i><i></i>&nbsp;부담 가장 낮음 · 편집만</div></div>
+  </div>
+
+  <div class="palette" aria-label="앨범 컬러 팔레트">
+    <div class="sw"><i style="background:#f8efdc"></i>Vanilla</div>
+    <div class="sw"><i style="background:#f6bfd0"></i>Sakura Pink</div>
+    <div class="sw"><i style="background:#ee9fb4"></i>Blush Pink</div>
+    <div class="sw"><i style="background:#a9cdf0"></i>Baby Blue</div>
+    <div class="sw"><i style="background:#cdbdee"></i>Light Purple</div>
+  </div>
+
+  <p class="notep">A·B안은 아래 구성을 모두 따르고, C안은 컬러·자막·썸네일만 적용합니다.</p>
+  <dl class="spec">
+    <dt>메인 화면</dt><dd>밤의 침실 고정 샷 10–20초 루프. 핑크 조명, 침대, 아날로그 시계, 살짝 열린 문</dd>
+    <dt>질감</dt><dd>2000년대 디카 + 홈비디오 느낌. 필름 그레인, 소프트 포커스, 약한 블러</dd>
+    <dt>컬러</dt><dd>Vanilla / Sakura Pink / Blush Pink / Baby Blue / Light Purple (앨범 컬러 팔레트 그대로)</dd>
+    <dt>챕터 전환</dt><dd>챕터마다 조명·시계 바늘만 변화: 핑크(기대) → 라이트 퍼플(마주함) → 베이비 블루(나를 발견)</dd>
+    <dt>오브제 포인트</dt><dd>마지막 챕터에서 거울에 비친 방으로 전환, 현관문 도어뷰 렌즈 효과는 인트로에 사용</dd>
+    <dt>자막</dt><dd>화면 하단에 현재 곡 제목·아티스트, 손글씨 느낌 폰트</dd>
+    <dt>썸네일</dt><dd>핑크 조명 아래 침대에 누운 민오브(또는 빈 침실) + 플래시 질감. 문구는 짧게 1줄</dd>
+  </dl>
+  <div class="thumbs"><span>사랑을 상상하던 밤</span><span>아직 열지 않은 문 앞에서</span><span class="latin">pink lens on</span></div>
+</section>
+
+<section id="upload">
+  <div class="sec-head"><span class="n">06</span><h2>업로드·일정·체크리스트</h2></div>
+  <div class="cols">
+    <div>
+      <h3>영상 제목 예시</h3>
+      <ul class="plain">
+        <li>[playlist] 처음 사랑을 상상하던 밤, 핑크 렌즈를 끼고 듣는 R&amp;B 플레이리스트</li>
+        <li>[playlist] 아직 열지 않은 문 앞에서 | 몽환적인 R&amp;B · Dream Pop 모음</li>
+      </ul>
+    </div>
+    <div>
+      <h3>설명란 구성</h3>
+      <ol class="plain">
+        <li>한 줄 소개: “아직 아무것도 시작되지 않은 밤, 모든 게 핑크빛으로 보이던 그때를 위한 플레이리스트”</li>
+        <li>민오브 싱글 소개 + 음원 링크</li>
+        <li>챕터별 타임스탬프 (유튜브 챕터 기능 사용)</li>
+        <li>크레딧 (영상·사진·기획 담당)</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>단계</th><th>내용</th><th>시점</th></tr></thead>
+      <tbody>
+        <tr><td>선곡 확정</td><td>트랙리스트·재생시간 확정</td><td>뮤비 촬영 전</td></tr>
+        <tr><td>소스 확보</td><td>영상 방향(A/B/C) 결정 후 소스 촬영·제작 (C안은 앨범 표지만 준비)</td><td>A안: 뮤비 촬영 당일<br>B·C안: 발매 2주 전까지</td></tr>
+        <tr><td>편집</td><td>루프 영상 + 음원 연결 + 자막·썸네일</td><td>발매 전주</td></tr>
+        <tr><td>업로드</td><td>유튜브 게시</td><td>발매 후 1주일 이내</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small">날짜는 마스터 일정이 확정되면 기입합니다.</p>
+
+  <div class="warn"><b>저작권 주의</b> · 다른 아티스트 곡을 넣으면 유튜브 Content ID에 걸려 수익이 원저작자에게 가거나, 국가별로 영상이 차단될 수 있습니다. 비공개로 먼저 올려 차단되는 곡을 확인하고 예비곡으로 교체합니다.</div>
+
+  <ul class="check" id="check">
+    <li tabindex="0" id="c1">최종 트랙리스트·총 러닝타임 30–40분 확인</li>
+    <li tabindex="0" id="c2">영상 방향 A/B/C 중 결정</li>
+    <li tabindex="0" id="c3">썸네일 시안 2안 제작</li>
+    <li tabindex="0" id="c4">비공개 업로드로 저작권 차단 여부 확인</li>
+    <li tabindex="0" id="c5">챕터 타임스탬프·설명란 작성</li>
+  </ul>
+</section>
+
+<footer>PINK LENS ON · MINOF</footer>
+</main>
+
+<script>
+(function(){
+  // checklist (per-viewer, optional storage)
+  var KEY='minof-playlist-check', state={};
+  try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){}
+  document.querySelectorAll('#check li').forEach(function(li){
+    if(state[li.id]) li.classList.add('done');
+    li.setAttribute('role','checkbox');
+    li.setAttribute('aria-checked',state[li.id]?'true':'false');
+    function toggle(){
+      var on=li.classList.toggle('done');
+      li.setAttribute('aria-checked',on?'true':'false');
+      state[li.id]=on;
+      try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}
+    }
+    li.addEventListener('click',toggle);
+    li.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle();}});
+  });
+
+  // glitter field
+  var cv=document.getElementById('sparkle'), ctx=cv.getContext('2d'), dots=[], W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tints=['255,255,255','255,214,234','230,220,255','214,234,255','255,236,200'];
+  function seed(){
+    W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.round(W*H/5200);dots=[];
+    for(var i=0;i<n;i++){dots.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()<.08?2.6+Math.random()*2.4:.6+Math.random()*1.4,
+      t:tints[(Math.random()*tints.length)|0],p:Math.random()*6.28,s:.6+Math.random()*1.6});}
+  }
+  function star(x,y,r,a,t){
+    ctx.fillStyle='rgba('+t+','+a+')';
+    ctx.beginPath();ctx.moveTo(x,y-r*3);ctx.quadraticCurveTo(x,y,x+r*3,y);ctx.quadraticCurveTo(x,y,x,y+r*3);ctx.quadraticCurveTo(x,y,x-r*3,y);ctx.quadraticCurveTo(x,y,x,y-r*3);ctx.fill();
+  }
+  function draw(time){
+    ctx.clearRect(0,0,W,H);
+    var k=(time||0)/1000;
+    for(var i=0;i<dots.length;i++){var d=dots[i],a=still?.75:.35+.6*Math.abs(Math.sin(d.p+k*d.s));
+      if(d.r>2.4){star(d.x,d.y,d.r,a,d.t);ctx.fillStyle='rgba(255,255,255,'+(a*.25)+')';ctx.beginPath();ctx.arc(d.x,d.y,d.r*2.2,0,6.28);ctx.fill();}
+      else{ctx.fillStyle='rgba('+d.t+','+a+')';ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,6.28);ctx.fill();}}
+    if(!still) requestAnimationFrame(draw);
+  }
+  seed();draw(0);
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){seed();if(still)draw(0);},150);});
+})();
+</script>
+</body>
+</html>
